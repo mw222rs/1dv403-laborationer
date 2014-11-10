@@ -5,22 +5,21 @@ window.onload = function(){
 	// I denna funktion ska du skriva koden för att hantera "spelet"
 	var convertString = function(str){
 		
-		try {
-		
-			var replaced = str.replace(/a/gi, "*");
-			
-			var convString = [replaced];
-			
-			return convString;
-		
-		
-				/* code */
-		} catch (Error) {
-			
-		throw new Error("Oj här gick nått fel!")
+		if (str === "") {
+			throw new Error("Oj här gick nått fel! Glömde du att skriva något?");
 		}
-		
-
+		else {
+			
+			var replaced = str.replace(/a/gi, "#");
+			
+			var arrayed = replaced.split("");
+			
+			var mapArrayed = arrayed.map(function(item, index, array){
+				return (item === item.toUpperCase()) ? item.toLowerCase() : item.toUpperCase();
+			});
+			
+			return mapArrayed.join("");
+		}
 	};
 	// ------------------------------------------------------------------------------
 
