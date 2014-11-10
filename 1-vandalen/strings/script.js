@@ -4,15 +4,22 @@ window.onload = function(){
 
 	// I denna funktion ska du skriva koden för att hantera "spelet"
 	var convertString = function(str){
-		// Plats för förändring.		
-		// Returnera den konverterade strängen.
-		// Vid fel, kasta ett undantag med ett meddelande till användaren. 
-	
-
-
-
-
-
+		
+		try {
+		
+			var replaced = str.replace(/a/gi, "*");
+			
+			var convString = [replaced];
+			
+			return convString;
+		
+		
+				/* code */
+		} catch (Error) {
+			
+		throw new Error("Oj här gick nått fel!")
+		}
+		
 
 	};
 	// ------------------------------------------------------------------------------
@@ -30,7 +37,7 @@ window.onload = function(){
 		p.classList.remove( "error");
 
 		try {
-			var answer = convertString(input.value) // Läser in texten från textrutan och skickar till funktionen "convertString"
+			var answer = convertString(input.value); // Läser in texten från textrutan och skickar till funktionen "convertString"
 			p.innerHTML = answer;		// Skriver ut texten från arrayen som skapats i funktionen.	
 		} catch (error){
 			p.classList.add( "error"); // Växla CSS-klass, IE10+
