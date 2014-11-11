@@ -5,13 +5,29 @@ window.onload = function(){
 	
 	var birthday = function(date){
 		
-
-
-			// Din kod här.
-
-
-
-
+		console.log("Indata: " + date);
+		
+		var userBday = new Date(date);
+		var now = new Date();
+		
+		var thisYearUserBday = new Date(now.getFullYear(), userBday.getMonth(), userBday.getDate());
+		var nextYearUserBday = new Date((now.getFullYear() + 1), userBday.getMonth(), userBday.getDate());
+		
+		
+		console.log("UserBday-objekt: " + userBday);
+		console.log("Nu: " + now);
+		console.log("Bday: " + thisYearUserBday);
+		console.log("Nästa år: " + nextYearUserBday);
+		
+		var diff = ((thisYearUserBday.getTime() < now.getTime()) ? nextYearUserBday.getTime() : thisYearUserBday.getTime()) - now.getTime();
+		
+		var days = Math.ceil(diff / (1000*60*60*24));
+		
+		
+		return days;
+		
+		
+		
 	};
 	// ------------------------------------------------------------------------------
 
