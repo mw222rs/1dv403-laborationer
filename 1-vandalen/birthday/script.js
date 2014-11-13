@@ -5,6 +5,10 @@ window.onload = function(){
 	
 	var birthday = function(date){
 		
+		if (date === "" || date.charAt(4) !== "-" || date.charAt(7) !== "-") {
+			throw new Error("Vänligen mata in ett giltigt datum.");
+		}
+		
 		console.log("Indata: " + date);
 		
 		var userBday = new Date(date);
@@ -12,7 +16,6 @@ window.onload = function(){
 		
 		var thisYearUserBday = new Date(now.getFullYear(), userBday.getMonth(), userBday.getDate());
 		var nextYearUserBday = new Date((now.getFullYear() + 1), userBday.getMonth(), userBday.getDate());
-		
 		
 		console.log("UserBday-objekt: " + userBday);
 		console.log("Nu: " + now);
@@ -23,11 +26,7 @@ window.onload = function(){
 		
 		var days = Math.ceil(diff / (1000*60*60*24));
 		
-		
 		return days;
-		
-		
-		
 	};
 	// ------------------------------------------------------------------------------
 

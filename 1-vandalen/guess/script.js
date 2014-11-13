@@ -13,7 +13,7 @@ window.onload = function(){
 		console.log("Antal gissningar: " + count); // Antal gissningar gjorda. 
 		
 		if (isNaN(number)) {
-			return [false, "Var vänlig mata in ett heltal."]
+			return [false, "Var vänlig mata in ett heltal."];
 		}
 		
 		number = +number;
@@ -33,12 +33,6 @@ window.onload = function(){
 			count += 1;
 			return [false, "Det hemliga talet är lägre!"];
 		}
-
-		// Returnera exempelvis: 
-		// [true, "Grattis du vann! Det hemliga talet var X och du behövde Y gissningar för att hitta det."]
-		// [false, "Det hemliga talet är högre!"]
-		// [false, "Det hemliga talet är lägre!"]
-		// [false, "Talet är utanför intervallet 0 - 100"]		
 	};
 	
 	// ------------------------------------------------------------------------------
