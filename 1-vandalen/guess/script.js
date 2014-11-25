@@ -19,7 +19,6 @@ window.onload = function(){
 		number = +number;
 		
 		if (number < 1 || number > 100) {
-			count += 1;
 			return [false, "Talet är utanför intervallet 0 - 100"];
 		}
 		else if (number === secret) {
