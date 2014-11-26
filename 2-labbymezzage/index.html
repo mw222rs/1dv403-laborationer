@@ -10,13 +10,15 @@
     <body>
         <div id="page">
             <h1>Labby Mezzage</h1>
-            <div id="message"></div>
-            <form>
-     			<textarea name="text" placeholder="Vänligen skriv ditt meddelande här."></textarea><input id="send" type="submit" value="Skicka" />
-     			<p id="value"></p>
-    		</form>       
-    
-        	  <script src="script/main.js"></script>
+            <div class="messageText"></div>
+            
+            <div id="board">
+                <p id="counter"></p>
+                <form>
+         			<textarea name="text" placeholder="Vänligen skriv ditt meddelande här." id="textArea"></textarea><input id="send" type="submit" value="Skicka" />
+         			<p id="value"></p>
+        		</form>
+            </div><!-- /end #board tag -->
         </div><!-- /end #page tag -->
     </body>
 </html>
