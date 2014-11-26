@@ -36,5 +36,5 @@ Message.prototype.toString = function(){
 };
 
 Message.prototype.getHTMLText = function(){
-    return "<p>"+this.getText()+"<p class=\"date\">"+this.getDate("simple")+"</p>"+"</p>"
+    return this.getText()+"<p class=\"date\">"+this.getDate("simple")+"</p>";
 };

@@ -7,7 +7,7 @@ var labbyMezzage = {
     
     init:function()
     {
-    var div = document.querySelector(".messageText");
+    
 	var input = document.querySelector("#textArea");
 	var submit = document.querySelector("#send");
 	var counter = document.querySelector("#counter");
@@ -19,14 +19,12 @@ var labbyMezzage = {
 
 		labbyMezzage.createMessage(input.value);
 		
-		var htmlStr = "";
+		labbyMezzage.renderMessages();
 		
-		labbyMezzage.messages.forEach(function(message){
-		    htmlStr += message.getHTMLText();
-		});
+		//div.innerHTML = labbyMezzage.renderMessages();
 		
 		counter.innerHTML = "Antal meddelanden: "+labbyMezzage.count;
-		div.innerHTML = htmlStr;		
+				
 	
 	});
         
@@ -37,11 +35,23 @@ var labbyMezzage = {
         
         this.messages.push(createdMessage);
         this.count = this.messages.length;
+    },
+    renderMessage: function(messageId){
+        var div = document.querySelector("#messageArea");
+        var messageText = document.createElement("p");
+        messageText.innerHTML = this.messages[messageId].getHTMLText();
+        div.appendChild(messageText);
+    },
+    renderMessages: function(){
         
-        return this.messages;
+        document.getElementById("messageArea").innerHTML = "";
+        
+        labbyMezzage.messages.forEach(function(value, id){
+		    labbyMezzage.renderMessage(id);
+		});
+		
     }
 };
-
 window.onload = labbyMezzage.init;
 
     
