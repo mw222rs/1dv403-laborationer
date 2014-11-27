@@ -56,6 +56,7 @@ table {
     src: url( 'Albertsthal_Typewriter.ttf' );
 }
 body {
+	font-family: typewriter;
     background: #DBDBD6;
 	background-image: url(10.jpg);
     padding: 0px;
@@ -71,7 +72,7 @@ h1 {
 	margin: 20px auto 20px;
 	width: 497px;
 }
-#messageArea p {
+.messageBread {
 	font-family: typewriter;
 	background: #FFF;
 	width: 100%;
@@ -79,7 +80,7 @@ h1 {
 	padding: 3px;
 	box-shadow: 5px 5px 7px 1px #000;
 }
-#messageArea p .date {
+.messageBread .date {
 	font-family: typewriter;
 	background: none;
 	margin-top: 0;
@@ -88,7 +89,14 @@ h1 {
 	text-align: right;
 	font-size: small;
 }
-#board {
+.messageBread a {
+	float: right;
+	font-size: smaller;
+	font-weight: bold;
+	padding-left: 3px;
+}
+	
+#inputArea {
 	background: #FFF;
 	width: 100%;
 	margin-top: 7px;
@@ -100,12 +108,14 @@ h1 {
 	font-family: typewriter;
 }
 textarea {
+	font-family: typewriter;
 	display: block;
 	margin: 5px auto;
 	width: 480px;
 	height: 250px;
 }
 input[type="submit"] {
+	border: 0;
 	font-family: typewriter;
 	margin-left: 425px;
 	width: 70px;

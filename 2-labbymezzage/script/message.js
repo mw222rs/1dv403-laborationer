@@ -7,7 +7,6 @@ function Message(message, date){
     this._date = date;
     
     this.getText = function(){
-        message = message.replace(/(\n)/g, "<br>");
         return message;
     }
     
@@ -15,13 +14,12 @@ function Message(message, date){
         message = _text;
     }
     
-    this.getDate = function(form){
-        if (form === "simple") {
+    this.getSmallDate = function(){
             return date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate();
-        }
-        else {
-            return date;
-        }
+    }
+    
+    this.getDate = function(){
+            return "Inlägget skapades "+date.toLocaleString();
         
     }
     
@@ -36,5 +34,5 @@ Message.prototype.toString = function(){
 };
 
 Message.prototype.getHTMLText = function(){
-    return this.getText()+"<p class=\"date\">"+this.getDate("simple")+"</p>";
+    return this.getText().replace(/(\n)/g, "<br>");
 };
