@@ -6,8 +6,7 @@
 */
 
 html, div, span, applet, object, iframe,
-h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
+h2, h3, h4, h5, h6, p, blockquote, pre, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
 b, u, i, center,
@@ -58,7 +57,7 @@ table {
 body {
 	font-family: typewriter;
     background: #DBDBD6;
-	background-image: url(10.jpg);
+	background-image: url("purty_wood.png");
     padding: 0px;
 }
 h1 {
@@ -80,6 +79,9 @@ h1 {
 	padding: 3px;
 	box-shadow: 5px 5px 7px 1px #000;
 }
+.messageBread p {
+	padding: 3px;
+}
 .messageBread .date {
 	font-family: typewriter;
 	background: none;
@@ -89,7 +91,9 @@ h1 {
 	text-align: right;
 	font-size: small;
 }
-.messageBread a {
+.messageBread a, .messageBread a:hover, .messageBread a:visited, .messageBread a:active{
+	color: #000;
+	text-decoration: none;
 	float: right;
 	font-size: smaller;
 	font-weight: bold;

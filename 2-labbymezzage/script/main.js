@@ -29,10 +29,16 @@ var labbyMezzage = {
     
     createMessage: function(input) // Creates a new message-object. 
     {
-        var createdMessage = new Message(input, new Date());
-        labbyMezzage.messages.push(createdMessage); // Pushes the object into the messages-array.
-        labbyMezzage.renderMessages(); // Renders the messages.
-	    return false;
+        if (input === "") {
+            document.querySelector("#counter").innerHTML = "FEL! Du kan inte posta ett tomt meddelande!";
+        }
+        else {
+            var createdMessage = new Message(input, new Date());
+            labbyMezzage.messages.push(createdMessage); // Pushes the object into the messages-array.
+            labbyMezzage.renderMessages(); // Renders the messages.
+	        return false;
+        }
+        
     },
     renderMessage: function(messageId){ // Render a single message. 
         
