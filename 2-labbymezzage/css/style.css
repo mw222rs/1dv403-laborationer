@@ -54,15 +54,21 @@ table {
     font-family: typewriter;
     src: url( 'Albertsthal_Typewriter.ttf' );
 }
+
+@font-face{
+	font-family: Pacifico;
+	src: url("Pacifico.ttf");
+}
+
 body {
-	font-family: typewriter;
+	font-family: georgia, serif;
     background: #DBDBD6;
 	background-image: url("purty_wood.png");
     padding: 0px;
 }
 h1 {
-	color: rgba(0, 0, 0, 0.6);
-    font-family: typewriter;
+	color: black;
+    font-family: Pacifico;
     font-size: 50px;
     padding-left: 5px;
     margin-bottom: 0;
@@ -72,7 +78,6 @@ h1 {
 	width: 497px;
 }
 .messageBread {
-	font-family: typewriter;
 	background: #FFF;
 	width: 100%;
 	margin-top: 7px;
@@ -83,7 +88,7 @@ h1 {
 	padding: 3px;
 }
 .messageBread .date {
-	font-family: typewriter;
+	font-family: georgia, serif;
 	background: none;
 	margin-top: 0;
 	padding: 0;
@@ -101,6 +106,7 @@ h1 {
 }
 	
 #inputArea {
+	font-family: georgia, serif;
 	background: #FFF;
 	width: 100%;
 	margin-top: 7px;
@@ -109,10 +115,10 @@ h1 {
 }
 #counter {
 	text-align: right;
-	font-family: typewriter;
+	font-family: georgia, serif;
 }
 textarea {
-	font-family: typewriter;
+	font-family: georgia, serif;
 	display: block;
 	margin: 5px auto;
 	width: 480px;
@@ -120,7 +126,7 @@ textarea {
 }
 input[type="submit"] {
 	border: 0;
-	font-family: typewriter;
+	font-family: georgia, serif;
 	margin-left: 425px;
 	width: 70px;
 }
