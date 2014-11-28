@@ -1,27 +1,26 @@
 "use strict";
 
 var labbyMezzage = {
-    
     messages: [],
     init:function()
     {
-    
-	var input = document.querySelector("#textArea");　// Find the textarea-node.
-	var submit = document.querySelector("#send"); // Find the submit-button.
+        
+	var textInput = document.getElementById("textArea");　// Find the textarea-node.
+	var submit = document.getElementById("send"); // Find the submit-button.
 	
-	input.onkeypress = function(e){
+	textInput.onkeypress = function(e){
 	    var key = e.keyCode;
 	    
 	    if (e.shiftKey === false && key === 13) {
 	        e.preventDefault();
-	        labbyMezzage.createMessage(input.value);
+	        labbyMezzage.createMessage(textInput.value);
 	    }
 	};
 	
 	submit.onclick = function(e){ // When the button is clicked...
 	    e.preventDefault();
 	    
-	    labbyMezzage.createMessage(input.value); // Create a new message with the text from the textarea. 
+	    labbyMezzage.createMessage(textInput.value); // Create a new message with the text from the textarea. 
 	    };
 	  
 	
@@ -30,7 +29,9 @@ var labbyMezzage = {
     createMessage: function(input) // Creates a new message-object. 
     {
         if (input.trim() === "") { // Säger till om meddelande-fältet inte innehåller några bokstäver.
-            document.querySelector("#counter").innerHTML = "Du kan inte posta ett tomt meddelande!";
+            var counter = document.getElementById("counter")
+            counter.classList.toggle("alert");
+            counter.innerHTML = "Du kan inte posta ett tomt meddelande!";
         }
         else {
             var createdMessage = new Message(input, new Date());
@@ -92,7 +93,9 @@ var labbyMezzage = {
 		});
 		
 		// Updates the counter with the length of the messages-array.
-		document.querySelector("#counter").innerHTML = "Antal meddelanden: "+labbyMezzage.messages.length;
+		var counter = document.getElementById("counter")
+        counter.classList.remove("alert");
+        counter.innerHTML = "Antal meddelanden: "+labbyMezzage.messages.length;
 		// Empties the textarea.
 		document.getElementById("textArea").value = "";
 	    

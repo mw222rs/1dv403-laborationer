@@ -130,3 +130,6 @@ input[type="submit"] {
 	margin-left: 425px;
 	width: 70px;
 }
+.alert {
+	color: red;
+}
