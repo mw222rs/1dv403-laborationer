@@ -15,7 +15,7 @@ function Message(message, date){
     };
     
     this.getSmallDate = function(){
-            return date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
+            return date.getHours()+":"+((date.getMinutes() < 10) ? "0"+date.getMinutes() : date.getMinutes())+":"+((date.getSeconds() < 10) ? "0"+date.getSeconds() : date.getSeconds());
     };
     
     this.getDate = function(){

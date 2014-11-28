@@ -43,7 +43,7 @@ var labbyMezzage = {
     },
     renderMessage: function(messageId){ // Render a single message. 
         
-        var div = document.querySelector("#messageArea"); // Find the #messageArea div-tag.
+        var div = document.getElementById("messageArea"); // Find the #messageArea div-tag.
         
         var div2 = document.createElement("div"); // Create a new div-tag...
         div2.classList.add("messageBread"); // ...and give it hte class .messageBread
