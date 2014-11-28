@@ -29,8 +29,8 @@ var labbyMezzage = {
     
     createMessage: function(input) // Creates a new message-object. 
     {
-        if (input === "") {
-            document.querySelector("#counter").innerHTML = "FEL! Du kan inte posta ett tomt meddelande!";
+        if (input.trim() === "") { // Säger till om meddelande-fältet inte innehåller några bokstäver.
+            document.querySelector("#counter").innerHTML = "Du kan inte posta ett tomt meddelande!";
         }
         else {
             var createdMessage = new Message(input, new Date());
