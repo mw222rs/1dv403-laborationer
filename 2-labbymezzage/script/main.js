@@ -16,13 +16,13 @@ var labbyMezzage = {
 	        e.preventDefault();
 	        labbyMezzage.createMessage(input.value);
 	    }
-	}
+	};
 	
 	submit.onclick = function(e){ // When the button is clicked...
 	    e.preventDefault();
 	    
 	    labbyMezzage.createMessage(input.value); // Create a new message with the text from the textarea. 
-	    }
+	    };
 	  
 	
 	},
@@ -56,7 +56,7 @@ var labbyMezzage = {
             if (window.confirm("Vill du verkligen radera meddelandet?")) { 
                 labbyMezzage.removeMessage(messageId);
             }
-        }
+        };
         div2.appendChild(removeLink);
 	    
 	    // Creates an a-tag with an onclick function for alerting the exact date of when the message was written. 
@@ -66,7 +66,7 @@ var labbyMezzage = {
 	    alertLink.innerHTML = "?";
 	    alertLink.onclick = function(){
 	        alert(labbyMezzage.messages[messageId].getDate());
-	    }
+	    };
 	    div2.appendChild(alertLink);
         
         // Creates a p-tag and injects the message text into it. 
@@ -93,6 +93,7 @@ var labbyMezzage = {
 		
 		// Updates the counter with the length of the messages-array.
 		document.querySelector("#counter").innerHTML = "Antal meddelanden: "+labbyMezzage.messages.length;
+		// Empties the textarea.
 		document.getElementById("textArea").value = "";
 	    
     },
