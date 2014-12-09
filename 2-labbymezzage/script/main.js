@@ -2,10 +2,11 @@
 
 var labbyMezzage = {
     messages: [],
+    counter: null,
     init:function()
     {
-        
-	var textInput = document.getElementById("textArea");　// Find the textarea-node.
+    labbyMezzage.counter = document.getElementById("counter");
+    var textInput = document.getElementById("textArea");　// Find the textarea-node.
 	var submit = document.getElementById("send"); // Find the submit-button.
 	
 	textInput.onkeypress = function(e){
@@ -29,9 +30,8 @@ var labbyMezzage = {
     createMessage: function(input) // Creates a new message-object. 
     {
         if (input.trim() === "") { // Säger till om meddelande-fältet inte innehåller några bokstäver.
-            var counter = document.getElementById("counter")
-            counter.classList.toggle("alert");
-            counter.innerHTML = "Du kan inte posta ett tomt meddelande!";
+            labbyMezzage.counter.classList.toggle("alert");
+            labbyMezzage.counter.innerHTML = "Du kan inte posta ett tomt meddelande!";
         }
         else {
             var createdMessage = new Message(input, new Date());
@@ -95,7 +95,7 @@ var labbyMezzage = {
 		// Updates the counter with the length of the messages-array.
 		var counter = document.getElementById("counter")
         counter.classList.remove("alert");
-        counter.innerHTML = "Antal meddelanden: "+labbyMezzage.messages.length;
+        labbyMezzage.counter.innerHTML = "Antal meddelanden: "+labbyMezzage.messages.length;
 		// Empties the textarea.
 		document.getElementById("textArea").value = "";
 	    

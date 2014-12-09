@@ -28,7 +28,6 @@ function Message(message, date){
     };
 }
 
-
 Message.prototype.toString = function(){
     return this.getText()+" ("+this.getDate()+") ";
 };
