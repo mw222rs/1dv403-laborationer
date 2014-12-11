@@ -1,7 +1,7 @@
 "use strict";
 
 var memory = {
-    rows: 4,
+    rows: 2,
     cols: 4,
     count: 0,
     pairedPics: 0,
@@ -66,7 +66,7 @@ var memory = {
                         a.firstChild.setAttribute("src", 
                             "pics/"+memory.pictureArray[index]+".png");
                     }
-                    else if (last !== null) {
+                    else {
                         a.firstChild.classList.toggle("up");
                         a.firstChild.classList.toggle("down");
                         a.firstChild.setAttribute("src", 
