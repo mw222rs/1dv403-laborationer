@@ -3,8 +3,7 @@
    License: none (public domain)
 */
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+html, body, div, span, applet, object, iframe, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
@@ -53,4 +52,16 @@ q:before, q:after {
     margin: 20px auto 20px;
     width: 250px;
     height: 250px;
+}
+h1 {
+	font-size: large;
+}
+.down {
+	border: 3px solid white;
+}
+.up {
+	border: 3px solid red;
+}
+.paired {
+	border: 3px solid green;
 }
