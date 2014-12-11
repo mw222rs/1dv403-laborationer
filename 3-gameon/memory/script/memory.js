@@ -1,7 +1,7 @@
 "use strict";
 
 var memory = {
-    rows: 2,
+    rows: 4,
     cols: 4,
     count: 0,
     pairedPics: 0,
@@ -49,83 +49,64 @@ var memory = {
         
         var as = document.querySelectorAll("a");
         
-        var last;
+        var last = null;
         var timeOutId;
         
         as.forEach(function(a, index){
             a.addEventListener("click", function(e){
                 e.preventDefault();
                 
-                window.clearTimeout(timeOutId);
-                
                 if (!a.firstChild.classList.contains("up") && !a.firstChild.classList.contains("paired")) {
                 
-                    window.clearTimeout(timeOutId);
-                
-                    if (memory.pictureArray[index] === last) {
+                    if (last === null) {
+                        last = memory.pictureArray[index];
+                        
                         a.firstChild.classList.toggle("up");
+                        a.firstChild.classList.toggle("down");
                         a.firstChild.setAttribute("src", 
                             "pics/"+memory.pictureArray[index]+".png");
-                        
-                        as.forEach(function(a){
-                            if (a.firstChild.classList.contains("up")) {
-                                //a.parentNode.innerHTML = a.firstChild.innerHTML;
-                                a.firstChild.classList.remove("up");
-                                a.firstChild.classList.add("paired");
-                            }
-                        });
-                        
-                        memory.count = 0;
-                        
-                        last = null;
-                        
-                        memory.pairedPics += 1;
-                        
-                        p.innerHTML= "Matcha "+((memory.cols*memory.rows/2)-memory.pairedPics)+" st par till för att vinna!";
-                        
-                        if (memory.pairedPics === (memory.cols*memory.rows / 2)) {
-                            p.innerHTML= "Grattis, du klarade det!";
-                        }
                     }
-                    
-                    else {
-                        if (memory.count === 0) {
-                            a.firstChild.classList.toggle("up");
-                            a.firstChild.classList.toggle("down");
-                            a.firstChild.setAttribute("src", 
-                                "pics/"+memory.pictureArray[index]+".png");
+                    else if (last !== null) {
+                        a.firstChild.classList.toggle("up");
+                        a.firstChild.classList.toggle("down");
+                        a.firstChild.setAttribute("src", 
+                            "pics/"+memory.pictureArray[index]+".png");
                             
-                            last = memory.pictureArray[index];
-                            
-                            memory.count += 1;
+                        if (memory.pictureArray[index] === last) {
+                            last = null;
+                            as.forEach(function(a){
+                                if (a.firstChild.classList.contains("up")) {
+                                    a.firstChild.classList.remove("up");
+                                    a.firstChild.classList.add("paired");
+                                }
+                            });
+                            memory.pairedPics += 1;
+                            p.innerHTML= "Matcha "+((memory.cols*memory.rows/2)-memory.pairedPics)+" st par till för att vinna!";
+                            if (memory.pairedPics === (memory.cols*memory.rows / 2)) {
+                                p.innerHTML= "Grattis, du klarade det!";
+                                var congrats = document.createElement("img");
+                                congrats.setAttribute("src","pics/wow.gif");
+                                memoryArea.appendChild(congrats);
+                            }
                         }
-                        else if (memory.count === 1) {
-                            a.firstChild.classList.toggle("up");
-                            a.firstChild.classList.toggle("down");
-                            a.firstChild.setAttribute("src", 
-                                "pics/"+memory.pictureArray[index]+".png");
-                            
-                            last = memory.pictureArray[index];
-                            memory.count += 1;
+                        else {
+                            last = null;
                             
                             window.setTimeout(function(){
                                 as.forEach(function(a){
                                     if (a.firstChild.classList.contains("up")) {
                                         a.firstChild.classList.remove("up");
                                         a.firstChild.classList.toggle("down");
-                                        
+                                            
                                         a.firstChild.setAttribute("src", "pics/0.png");
+                                        
+                                        last = null;
                                     }
-                                    memory.count = 0;
                                 });
-                                last = null;
-                            }, 1000);
+                                }, 1000);
                         }
                     }
                 }
-                
-                console.log(last);
-                
                 return false;
             });
         });
