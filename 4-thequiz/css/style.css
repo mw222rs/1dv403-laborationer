@@ -3,7 +3,7 @@
    License: none (public domain)
 */
 
-html, body, div, span, applet, object, iframe, h2, h3, h4, h5, h6, p, blockquote, pre,
+html, body, div, span, applet, object, iframe, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
@@ -47,6 +47,7 @@ q:before, q:after {
 }*/
 
 /* END OF CSS RESET! */
+
 @font-face{
 	font-family: Pacifico;
 	src: url("Pacifico.ttf");
@@ -58,7 +59,6 @@ body {
 	background-image: url("purty_wood.png");
     padding: 0px;
 }
-
 h1 {
 	color: black;
     font-family: Pacifico;
@@ -66,31 +66,22 @@ h1 {
     padding-left: 5px;
     margin-bottom: 0;
 }
-#page {
+
+#wrap {
 	margin: 20px auto 20px;
 	width: 350px;
 }
-#memoryArea {
+#page {
 	background: #FFF;
+	width: 100%;
+	min-height: 105px;
 	margin-top: 7px;
 	padding: 3px;
 	box-shadow: 5px 5px 7px 1px #000;
 }
-table {
-	margin-top: 10px;
-	margin-left: auto;
-	margin-right: auto;
+h2 {
+	font-size: large;
 }
-img {
-	margin-left: auto;
-	margin-right: auto;
-}
-.down {
-	border: 3px solid white;
-}
-.up {
-	border: 3px solid red;
-}
-.paired {
-	border: 3px solid green;
+.right {
+	float:right;
 }

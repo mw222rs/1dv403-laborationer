@@ -16,12 +16,6 @@ var memory = {
         var tableBody = document.createElement("tbody");
         var k = 0;
         
-        var h1 = document.createElement("h1");
-        h1.innerHTML = "Memory";
-        
-        memoryArea.appendChild(h1);
-        
-        
         for (var i = 0; i < memory.rows; i++) {
             var tr = document.createElement("tr");
             
