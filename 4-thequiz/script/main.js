@@ -24,8 +24,6 @@ var quiz = {
         var p = document.createElement("p");
         var tries = 0;
         
-        
-        
         var xhr = new XMLHttpRequest();
     
         xhr.onreadystatechange = function(){
@@ -146,11 +144,18 @@ var quiz = {
         
         div.appendChild(h2);
         
+        var ul = document.createElement("ul");
+        
+        
+        
         quiz.stats.forEach(function(value, index){
-            p.innerHTML += "Du svarade rätt på fråga "+(index+1)+" efter "+value+" försök. </br>";
+            var li = document.createElement("li");
+            li.innerHTML = "Du svarade rätt på fråga "+(index+1)+" efter "+value+" försök.";
+            
+            ul.appendChild(li);
         });
         
-        div.appendChild(p);
+        div.appendChild(ul);
         
         var a = document.createElement("a");
          a.setAttribute("href","#");
