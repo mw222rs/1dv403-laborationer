@@ -62,6 +62,9 @@ var quiz = {
                 	    }
                 	};
                 }
+                else if (xhr.status === 404){
+                    quiz.finish();
+                }
                 else {
                     console.log("Läsfel, status: "+xhr.status);
                 }
@@ -84,10 +87,6 @@ var quiz = {
                      
                      var question = JSON.parse(xhr.responseText);
                      
-                     if (question.nextURL === undefined) {
-                         quiz.finish();
-                     }
-                      
                      quiz.nextUrl = question.nextURL;
                      
                      div.removeChild(input);
@@ -117,8 +116,8 @@ var quiz = {
                      p.innerHTML = "Fel svar, försök igen!";
                      input.value = "";
                   }
-                  else if (xhr.status === 404){
-                      quiz.finish();
+                  else {
+                      console.log("Läsfel, status: "+xhr.status);
                   }
               }
                 
@@ -158,20 +157,20 @@ var quiz = {
         div.appendChild(ul);
         
         var a = document.createElement("a");
-         a.setAttribute("href","#");
-         a.classList.remove("right");
-         a.innerHTML = "Prova en gång till!";
-         div.appendChild(a);
+        a.setAttribute("href","#");
+        a.classList.remove("right");
+        a.innerHTML = "Prova en gång till!";
+        div.appendChild(a);
          
-         a.onclick = function(){
-             quiz.nextUrl = null;
-             quiz.tries = null;
-             quiz.stats = [];
-             
-             
-           quiz.init();
-           return false;
-         };
+        a.onclick = function(){
+            quiz.nextUrl = null;
+            quiz.tries = null;
+            quiz.stats = [];
+            
+            quiz.init();
+            
+            return false;
+        };
     }
 };
 
