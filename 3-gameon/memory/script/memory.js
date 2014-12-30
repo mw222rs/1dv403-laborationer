@@ -1,7 +1,7 @@
 "use strict";
 
 var memory = {
-    rows: 2,
+    rows: 4,
     cols: 4,
     count: 0,
     pairedPics: 0,
