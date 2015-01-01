@@ -62,7 +62,7 @@ body {
 	background-color: rgba(250,250,250,0.6);
 	position: absolute;
 	width: 100%;
-	bottom: 2px;
+	bottom: 0px;
 }
 #footer img {
 	width: 50px;
@@ -80,6 +80,8 @@ h1 {
 	width: 350px;
 }
 .windowWrap {
+	
+	border-radius: 5px;
 	background-color: white;
 	margin: 20px;
 	width: 450px;
@@ -88,18 +90,16 @@ h1 {
 }
 
 .windowHeadDiv {
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
 	text-align: center;
 	height: 30px;
+	background-color: rgb(240,240,240);
 }
 .windowHeadDiv h2{
-	padding-top: 15px;
-	display: inline;
+	padding-top: 5px;
 	font-size: 15px;
 	font-weight: bold;
-	font-style: none;
-}
-.windowHeadDiv img {
-	margin: -3px;
 }
 
 #page {
@@ -112,9 +112,6 @@ h1 {
     -moz-transform: scale(1.25);
     position: relative;
     z-index: 5;
-}
-h2 {
-	font-size: large;
 }
 .right {
 	float:right;
@@ -138,21 +135,26 @@ ul {
 
 
 .windowFooter {
-	display: inline;
-	padding-left: 10px;
+	height: 20px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	background-color: rgb(240,240,240);
 	font-size: 12px;
 }
 .windowFooter p {
-	display: inline;
+	margin-left: 20px;
 	padding: 5px;
 }
 .windowFooter img {
+	float: left;
+	margin: 2px;
 	display: inline;
 }
 .hide {
 	display: none;
 }
 .imgBox {
+	border-radius: 5px;
 	margin: 5px;
 	padding: 5px;
 	float: left;

@@ -1,49 +1,28 @@
 "use strict";
 
-define(["Mustache", "Window"], function(Mustache, Window){
-    
+define(["Window", "ImageViewerWindow", "jQuery"], function(Window, ImageViewerWindow, jQuery){
     var pwd = {
         init:function(){
+            
             var footerDiv = document.getElementById("footer");
-            
             var a = document.createElement("a");
+            var iconImg = document.createElement("img");
+            var page = document.getElementById("page");
             a.setAttribute("src","#");
-            
-            
-            var iconTemplate = document.getElementById("iconTemplate").innerHTML;
-            Mustache.parse(iconTemplate);
-            var img = {
-                imgSrc: "pics/picture.png",
-                imgWidth: 50
-            };
-            a.innerHTML = Mustache.render(iconTemplate, img);
-            
+            iconImg.setAttribute("src", "pics/picture.png");
+            a.appendChild(iconImg);
             footerDiv.appendChild(a);
             
-            a.addEventListener("click", function(e){
-                e.preventDefault();
+            var imageViewerWindow = new ImageViewerWindow("Image Viewer");
+            
+            $(a).click(function(){
                 
-                pwd.createWindow();
+                imageViewerWindow.clickFunction();
                 
-                return false;
             });
             
-            
-        },
-        createWindow:function(){
-            
-            var page = document.getElementById("page");
-            
-            var windowWrap = document.createElement("div");
-            windowWrap.classList.add("windowWrap");
-            
-            var windowHeadDiv = document.createElement("div");
-            windowHeadDiv.classList.add("windowHeadDiv");
-            
-            
-            windowWrap.appendChild(windowHeadDiv);
-            page.appendChild(windowWrap)
         }
     };
     window.onload = pwd.init;
+    
 });
