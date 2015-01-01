@@ -91,7 +91,7 @@ h1 {
 	text-align: center;
 	height: 30px;
 }
-.windowHeadDiv p{
+.windowHeadDiv h2{
 	padding-top: 15px;
 	display: inline;
 	font-size: 15px;
@@ -135,10 +135,8 @@ ul {
 	overflow-y: scroll;
 	height: 250px;
 }
-.windowMain img {
-	background-color: rgba(240,240,240,0.7);
-	width: 75px;
-}
+
+
 .windowFooter {
 	display: inline;
 	padding-left: 10px;
@@ -153,4 +151,15 @@ ul {
 }
 .hide {
 	display: none;
+}
+.imgBox {
+	margin: 5px;
+	padding: 5px;
+	float: left;
+	background-color: rgba(240,240,240,0.7);
+}
+.imgBox img {
+	margin: auto;
+	position: relative;
+	display: block;
 }
