@@ -4,8 +4,6 @@ define("Window", function(){
     var Window = function(title){
         this._title = title;
         
-        this._startTime;
-        
         this.getTitle = function(){
             return title;
         }
@@ -21,7 +19,6 @@ define("Window", function(){
     };
     
     Window.prototype.timer = function(input){
-        
         if (input === "start") {
             this._startTime = new Date().getTime();
         }
@@ -38,17 +35,17 @@ define("Window", function(){
             }
         }
         else {
-            throw "Vänligen skicka endas start eller stop till denna funktion.";
+            throw "Vänligen skicka endast start eller stop till denna funktion.";
         }
     };
     
     Window.prototype.openWindow = function(){
         this.isOpen = true;
-        $(this.windowWrap).slideToggle(100);
+        $(this.windowWrap).fadeIn(100);
     };
     Window.prototype.closeWindow = function(){
         this.isOpen = false;
-        $(this.windowWrap).slideToggle(100);
+        $(this.windowWrap).fadeOut(100);
     };
     
     Window.prototype.clickFunction = function(){

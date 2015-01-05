@@ -1,6 +1,6 @@
 "use strict";
 
-define(["Window", "ImageViewerWindow", "jQuery"], function(Window, ImageViewerWindow, jQuery){
+define(["Window", "ImageViewerWindow", "Mustache", "jquery"], function(Window, ImageViewerWindow, Mustache, jquery){
     var pwd = {
         init:function(){
             

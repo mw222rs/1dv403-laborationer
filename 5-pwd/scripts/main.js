@@ -2,7 +2,8 @@
 
 require.config({
     paths: {
-        "jQuery": "lib/jquery.min",
+        "Mustache": "lib/mustache",
+        "jquery": "lib/jquery",
         "Window": "lib/windows/Window",
         "ImageViewerWindow": "lib/windows/ImageViewerWindow"
     }

@@ -1,0 +1,5 @@
+<div class="imgBox">
+    <a href="#">
+        <img src={{thumbURL}}>
+    </a>
+</div>
