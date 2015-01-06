@@ -44,7 +44,7 @@ define(["Window", "ImageViewerWindow", "Mustache"], function(Window, ImageViewer
                 });
             },
             error: function(){
-                console.log("error getting JSON.");
+                console.log("Error getting JSON.");
             }
         });
     };
