@@ -14,7 +14,9 @@ define(["Window", "ImageViewerWindow", "Mustache", "jquery"], function(Window, I
             footerDiv.appendChild(a);
             
             var imageViewerWindow = new ImageViewerWindow("Image Viewer");
-            
+
+            // Test
+
             $(a).click(function(){
                 
                 imageViewerWindow.clickFunction();
