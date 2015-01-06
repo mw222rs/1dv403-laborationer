@@ -20,10 +20,8 @@ define(["Window", "ImageViewerWindow", "Mustache"], function(Window, ImageViewer
         var that = this;
         
         var thumbWidth = [];
-        var imgBox;
-        var img;
-        var a;
-        var template = "<div class=\"imgBox\"><a href=\"#\"><img src={{thumbURL}}></a></div>";
+        var template = $("#images-template").html();
+        var $windowMain = $(".windowMain");
         
         $.ajax({
             type: "GET",
@@ -36,15 +34,12 @@ define(["Window", "ImageViewerWindow", "Mustache"], function(Window, ImageViewer
                     thumbWidth.push(image.thumbWidth);
                 });
                 thumbWidth.sort().reverse();
-                $(".windowMain").find(".imgBox").width(thumbWidth[0]+4);
+                $($windowMain).find(".imgBox").width(thumbWidth[0]+4);
                 that.windowFooter.removeChild(that.loaderGif);
                 that.footerTxt.innerHTML = that.timer("stop");
                 
-                $(".windowMain").find("a").click(function(e){
-                    e.preventDefault();
-                    
-                    document.body.style.backgroundImage = "url(" + image.URL + ")";
-                    
+                $($windowMain).find("a").click(function(e){
+                    document.body.style.backgroundImage = "url(" + this.firstChild.alt + ")";
                     return false;
                 });
             },

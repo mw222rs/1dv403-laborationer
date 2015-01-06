@@ -45,7 +45,7 @@ define("Window", function(){
     };
     Window.prototype.closeWindow = function(){
         this.isOpen = false;
-        $(this.windowWrap).fadeOut(100);
+        $(this.windowWrap).fadeOut(100).remove();
     };
     
     Window.prototype.clickFunction = function(){
