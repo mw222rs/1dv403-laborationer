@@ -41,11 +41,15 @@ define("Window", function(){
     
     Window.prototype.openWindow = function(){
         this.isOpen = true;
-        $(this.windowWrap).fadeIn(100);
+        $(this.windowWrap).fadeIn(200);
     };
     Window.prototype.closeWindow = function(){
         this.isOpen = false;
-        $(this.windowWrap).fadeOut(100).remove();
+        var that = this;
+        $(this.windowWrap).fadeOut(200, function(){
+            $(that.windowWrap).remove();
+        });
+        
     };
     
     Window.prototype.clickFunction = function(){
@@ -67,6 +71,11 @@ define("Window", function(){
         this.timer("start");
         
         var that = this;
+        
+        /*var data = {
+            title: ,
+            
+        }*/
         
         var page = document.getElementById("page");
         this.windowWrap = document.createElement("div");
