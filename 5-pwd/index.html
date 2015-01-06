@@ -13,6 +13,19 @@
     	
     	<div id="footer"></div>
     	
+    	<template id="window-template">
+    		<div id="page" title="">
+    			<div class="windowWrap">
+    				<div class="windowHeadDiv">
+    					<a src="#"><img src="pics/picture.png" class="headIcon"></a>
+    					<a src="#"><img src="pics/delete.png" class="closer"></a>
+    					<h2>Image Viewer</h2>
+    				</div>
+    				
+    				<div class="windowMain"></div>
+    				<div class="windowFooter"><p>{{loadTime}}</p></div></div></div>
+    	</template>
+    	
     	<template id="images-template">
     		<div class="imgBox">
     			<a href="#"><img src={{thumbURL}} alt={{URL}}></a>
