@@ -2,11 +2,7 @@
 
 define(["Window", "ImageViewerWindow", "Mustache"], function(Window, ImageViewerWindow, Mustache){
     var ImageViewerWindow = function(title){
-        this._title = title;
-        
-        this.getTitle = function(){
-            return title;
-        };
+        this._title = title;        
         
         this.isOpen = false;
         
@@ -21,27 +17,33 @@ define(["Window", "ImageViewerWindow", "Mustache"], function(Window, ImageViewer
         
         var thumbWidth = [];
         var template = $("#images-template").html();
-        var $windowMain = $(".windowMain");
+        var $windowMain = $(".new").find(".windowMain");
         
         $.ajax({
             type: "GET",
             url: "http://homepage.lnu.se/staff/tstjo/labbyServer/imgviewer/",
             success: function(images){
+                var data = {images: []};
                 var parsed = JSON.parse(images);
                 $.each(parsed, function(i, image){
-                    var rendered = Mustache.render(template, image);
-                    that.windowMain.innerHTML += rendered;
+                    data.images.push({URL: image.URL, thumbURL: image.thumbURL});
                     thumbWidth.push(image.thumbWidth);
                 });
+
+                var rendered = Mustache.render(template, data);                    
+                $($windowMain).html(rendered);
+
+
                 thumbWidth.sort().reverse();
                 $($windowMain).find(".imgBox").width(thumbWidth[0]+4);
-                that.windowFooter.removeChild(that.loaderGif);
-                that.footerTxt.innerHTML = that.timer("stop");
-                
+                $($windowMain).parent().find(".windowFooter").html("<p>"+that.timer("stop")+"</p>");                
+
                 $($windowMain).find("a").click(function(e){
                     document.body.style.backgroundImage = "url(" + this.firstChild.alt + ")";
                     return false;
                 });
+
+                $($windowMain).parent().removeClass("new");
             },
             error: function(){
                 console.log("Error getting JSON.");

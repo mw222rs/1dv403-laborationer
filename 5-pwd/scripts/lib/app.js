@@ -4,20 +4,11 @@ define(["Window", "ImageViewerWindow", "Mustache", "jquery"], function(Window, I
     var pwd = {
         init:function(){
             
-            var footerDiv = document.getElementById("footer");
-            var a = document.createElement("a");
-            var iconImg = document.createElement("img");
-            var page = document.getElementById("page");
-            a.setAttribute("src","#");
-            iconImg.setAttribute("src", "pics/picture.png");
-            a.appendChild(iconImg);
-            footerDiv.appendChild(a);
+            var $footerDiv = $("#footer");
             
             var imageViewerWindow = new ImageViewerWindow("Image Viewer");
 
-            // Test
-
-            $(a).click(function(){
+            $($footerDiv).find("a").click(function(){
                 
                 imageViewerWindow.clickFunction();
                 
@@ -25,6 +16,7 @@ define(["Window", "ImageViewerWindow", "Mustache", "jquery"], function(Window, I
             
         }
     };
-    window.onload = pwd.init;
+
+    window.onload = pwd.init();
     
 });

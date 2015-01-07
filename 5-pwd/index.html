@@ -4,32 +4,33 @@
 	<meta charset="UTF-8" />
 	<link rel="stylesheet" type="text/css" href="css/style.css" media="screen, projection, handheld">
 	<title>pwd</title>
-	<script data-main="scripts/main" src="scripts/lib/require.js"></script>
+	<script data-main="scripts/main.js" src="scripts/require.js"></script>
 	
 </head>
     <body>
     	<h1>...för att webben är det nya allt</h1>
     	<div id="page"></div>
     	
-    	<div id="footer"></div>
+    	<div id="footer"><a src="#" id="imageViewLink"><img src="pics/picture.png"></a></div>
     	
-    	<template id="window-template">
-    		<div id="page" title="">
-    			<div class="windowWrap">
+    	<template id="window-template">    		
+    			<div class="windowWrap new" >
     				<div class="windowHeadDiv">
-    					<a src="#"><img src="pics/picture.png" class="headIcon"></a>
+    					<a src="#"><img src={{{imgSrc}}} class="headIcon"></a>
     					<a src="#"><img src="pics/delete.png" class="closer"></a>
-    					<h2>Image Viewer</h2>
+    					<h2>{{title}}</h2>
     				</div>
     				
     				<div class="windowMain"></div>
-    				<div class="windowFooter"><p>{{loadTime}}</p></div></div></div>
+    				<div class="windowFooter"><img src="pics/ajax-loader.gif"><p>Laddar...</p></div>
     	</template>
     	
     	<template id="images-template">
+        {{#images}}
     		<div class="imgBox">
     			<a href="#"><img src={{thumbURL}} alt={{URL}}></a>
     		</div>
+        {{/images}}
     	</template>
     </body>
 </html>

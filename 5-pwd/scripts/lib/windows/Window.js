@@ -1,23 +1,10 @@
 "use strict";
 
-define("Window", function(){
-    var Window = function(title){
-        this._title = title;
-        
-        this.getTitle = function(){
-            return title;
-        }
-        
-        this.isOpen = false;
-        
-        var windowWrap;
-        var windowMain;
-        var windowFooter;
-        var footerTxt;
-        var loaderGif;
-            
-    };
+define(["Window", "Mustache"], function(Window, Mustache){
+    var Window = function(){};
     
+    Window.prototype.getTitle = function(){return this._title};
+
     Window.prototype.timer = function(input){
         if (input === "start") {
             this._startTime = new Date().getTime();
@@ -41,13 +28,14 @@ define("Window", function(){
     
     Window.prototype.openWindow = function(){
         this.isOpen = true;
-        $(this.windowWrap).fadeIn(200);
+        $("#page").find("div.new").fadeIn(200, function(){
+            $(this).removeAttr('style');
+        });
     };
-    Window.prototype.closeWindow = function(){
+    Window.prototype.closeWindow = function(clicked){
         this.isOpen = false;
-        var that = this;
-        $(this.windowWrap).fadeOut(200, function(){
-            $(that.windowWrap).remove();
+        $(clicked).closest(".windowWrap").fadeOut(200, function(){
+            $(clicked).closest(".windowWrap").remove();
         });
         
     };
@@ -69,82 +57,35 @@ define("Window", function(){
     
     Window.prototype.renderWindow = function(){
         this.timer("start");
+
+        var self = this;
         
-        var that = this;
-        
-        /*var data = {
-            title: ,
-            
-        }*/
-        
-        var page = document.getElementById("page");
-        this.windowWrap = document.createElement("div");
-        var windowHeadDiv = document.createElement("div");
-        var backReturnerA = document.createElement("a");
-        var iconImg = document.createElement("img");
-        var windowTitle = document.createElement("h2");
-        var closerA = document.createElement("a");
-        var closerImg = document.createElement("img");
-        
-        this.windowMain = document.createElement("div");
-        this.windowFooter = document.createElement("div");
-        this.loaderGif = document.createElement("img");
-        this.footerTxt = document.createElement("p");
-        
-        $(this.windowWrap).hide();
-    
-        this.windowWrap.classList.add("windowWrap");
-        
-        windowHeadDiv.classList.add("windowHeadDiv");
-        
-        iconImg.setAttribute("src", this.imgUrl);
-        iconImg.classList.add("headIcon");
-        
-        backReturnerA.setAttribute("src","#");
-        backReturnerA.appendChild(iconImg);
-        
-        $(backReturnerA).click(function(e){
-            e.preventDefault();
-            
-            document.body.style.backgroundImage = "url(" + "css/purty_wood.png" + ")";
-            
+        var template = $("#window-template").html();
+
+        var data = {
+            "title": this.getTitle(),
+            "imgSrc": this.imgUrl
+        };
+
+        var rendered = Mustache.render(template, data);
+        $("#page").html(rendered);        
+
+
+        $(".headIcon").click(function(e){
+            e.preventDefault();            
+            document.body.style.backgroundImage = "url(" + "css/purty_wood.png" + ")";            
             return false;
         });
-        
-        windowHeadDiv.appendChild(backReturnerA);
-        
-        closerA.setAttribute("src", "#");
-        closerImg.setAttribute("src","pics/delete.png");
-        closerImg.classList.add("closer");
-        closerA.appendChild(closerImg);
-        
-        $(closerA).click(function(e){
-            e.preventDefault();
-            
-            that.closeWindow();
-            
+
+        $(".closer").click(function(e){
+            e.preventDefault();            
+            var clicked = this;
+            self.closeWindow(clicked);            
             return false;
         });
+
+        $("#page").find(".new").hide();
         
-        windowHeadDiv.appendChild(closerA);
-        
-        windowTitle.innerHTML = this.getTitle();
-        windowHeadDiv.appendChild(windowTitle);
-        
-        this.windowWrap.appendChild(windowHeadDiv);
-        this.windowMain.classList.add("windowMain");
-        
-        this.windowWrap.appendChild(this.windowMain);
-        this.windowFooter.classList.add("windowFooter");
-        
-        this.loaderGif.setAttribute("src","pics/ajax-loader.gif");
-        this.windowFooter.appendChild(this.loaderGif);
-        
-        this.footerTxt.innerHTML = "Laddar...";
-        this.windowFooter.appendChild(this.footerTxt);
-        
-        this.windowWrap.appendChild(this.windowFooter);
-        page.appendChild(this.windowWrap);
         
     };
     
